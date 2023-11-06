@@ -1,4 +1,3 @@
-# Error handling
 def get_number_input(prompt):
     while True:
         try:
@@ -7,7 +6,6 @@ def get_number_input(prompt):
         except ValueError:
             print("Invalid input. Please enter a valid number.")
 
-# Choosing arithmetic operations
 def get_operator_input():
     valid_operators = ['+', '-', '*', '/']
     while True:
@@ -17,7 +15,6 @@ def get_operator_input():
         else:
             print("Invalid operator. Please choose +, -, *, or /.")
 
-# Calculate functions 
 def calculate(num1, operator, num2):
     if operator == "+":
         return num1 + num2
@@ -30,17 +27,22 @@ def calculate(num1, operator, num2):
             raise ZeroDivisionError("Error: Division by zero is not allowed.")
         return num1 / num2
 
-# Ask for user input 
-try:
-    print("Calculator: ")
-    num1 = get_number_input("Enter the first number: ")
-    operator = get_operator_input()
-    num2 = get_number_input("Enter the second number: ")
-    result = calculate(num1, operator, num2)
-    print("Result:", result)
-except ZeroDivisionError as e:
-    print(e)
-except KeyboardInterrupt:
-    print("\nCalculation aborted.")
-except Exception as e:
-    print(f"An error occurred: {e}")
+while True:
+    try:
+        print("Calculator:")
+        
+        num1 = get_number_input("Enter the first number: ")
+        operator = get_operator_input()
+        num2 = get_number_input("Enter the second number: ")
+        result = calculate(num1, operator, num2)
+        print("Result:", result)
+    except ZeroDivisionError as e:
+        print(e)
+    except KeyboardInterrupt:
+        print("\nCalculation aborted.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+    exit_command = input("Enter 'exit' to end the program, or press Enter to continue: ")
+    if exit_command.lower() == "exit":
+        break
